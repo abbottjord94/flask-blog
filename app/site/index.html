@@ -1,9 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
 	{% for post in posts %}
-		<div class = "col-md-6">
-			<h1>{{post.author}}</h1>
-			<h4>{{post.text}}</h4>
+		<div id="accordion">
+
+		  <div class="card" ng-repeat = "x in fixedCategories">
+			<div class="card-header">
+			  <a class="card-link" data-toggle="collapse">{{post.author}}</a>
+			</div>
+			<div class="collapse" data-parent="#accordion">
+			  <div class="card-body">
+				<div class="container-fluid">
+					<div class="row">
+						<h4>{{post.text}}</h4>
+					</div>
+				</div>
+			  </div>
+			</div>
+		  </div>
 		</div>
 	{% endfor %}
 
