@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+	<form method="POST" action="/post">
+		<div class = "form-group">
+			<input type = "text" name="post_title"></input>
+			<input type = "textarea" name="post_text"></input>
+			<input type = "submit"></input>
+		</div>
+	</form>
+{% endblock content  %}
