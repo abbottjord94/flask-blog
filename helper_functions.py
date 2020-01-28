@@ -15,7 +15,13 @@ mimetypes = {
 	".jpg":"image/jpeg",
 	".jpeg":"image/jpeg",
 	".png":"image/png",
-	".gif":"image/gif"
+	".gif":"image/gif",
+	".mp4":"video/mp4",
+	".bmp":"image/bmp",
+	".ico":"image/x-icon",
+	".wav":"audio/wav",
+	".webm":"video/webm",
+	".bin":"application/octet-stream"
 }
 
 def getMimeType(filename):
