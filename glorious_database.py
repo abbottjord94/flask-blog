@@ -2,16 +2,30 @@ import os
 import json
 
 class Database():
-	_data = []
-	_filename=os.path.join(os.path.dirname(__file__)) + "/database.json"
+	_data = {}
+	_filename = ""
+	_dirpath = ""
+
+	def __init__(self, _fn="database.json", _dp=os.path.dirname(__file__)):
+		self._filename = os.path.join(_dp, _fn)
+		if not os.path.exists(self._filename):
+			with open(self._filename, 'w+') as outfile:
+				outfile.write("{}")
+				outfile.close()
+		else:
+			with open(self._filename) as json_file:
+				self._data = json.load(json_file)
+				json_file.close()
 
 	def load(self):
 		with open(self._filename) as json_file:
 			self._data = json.load(json_file)
+			json_file.close()
 
 	def save(self):
-		with open(self._filename, 'w') as outfile:
+		with open(self._filename, 'w+') as outfile:
 			json.dump(self._data, outfile)
+			outfile.close()
 
 	def insert(self,key,obj):
 		self.load()
