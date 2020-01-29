@@ -5,12 +5,30 @@ import os
 
 items = [
 	{
+		'id':"a431f",
 		'author': "Jordan Abbott",
-		'text': "Epstein Didn't Kill Himself"
+		'text': "Epstein Didn't Kill Himself",
+		'replies': [
+			{
+				'text':"yes indeed"
+			},
+			{
+				'text':"hillary did it"
+			}
+		]
 	},
 	{
+		'id':"r53fg",
 		'author': "Jordan Abbott",
-		'text': "All hail our mightly robot overlords"
+		'text': "All hail our mightly robot overlords",
+		'replies': [
+			{
+				'text':"no"
+			},
+			{
+				'text':"all hail calculotron"
+			}
+		]
 	}
 ]
 

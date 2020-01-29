@@ -1,23 +1,39 @@
 {% extends "layout.html" %}
 {% block content %}
 	{% for post in posts %}
+	<div class = "container-fluid">
 		<div id="accordion">
 
-		  <div class="card" ng-repeat = "x in fixedCategories">
+		  <div class="card">
 			<div class="card-header">
-			  <a class="card-link" data-toggle="collapse">{{post.author}}</a>
+			  <a class="card-link" data-toggle="collapse" href="#{{post.id}}">{{post.author}}</a>
 			</div>
-			<div class="collapse" data-parent="#accordion">
+			<div class="collapse" id = "{{post.id}}" data-parent="#accordion">
 			  <div class="card-body">
 				<div class="container-fluid">
+					<!--
+					Post text and replies will go here (another for loop will be needed)
+					-->
 					<div class="row">
-						<h4>{{post.text}}</h4>
+						<div class="col">
+							<h4>{{post.text}}</h4>
+						</div>
 					</div>
+					{% for reply in post.replies %}
+					<div class="row">
+						<div class="col">
+							<h4>{{reply.text}}</h4>
+						</div>
+					</div>
+					{% endfor %}
 				</div>
 			  </div>
 			</div>
 		  </div>
 		</div>
+
+
+	</div>
 	{% endfor %}
 
 {% endblock content  %}
