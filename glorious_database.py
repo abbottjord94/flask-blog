@@ -38,4 +38,5 @@ class Database():
 		self.save()
 
 	def data(self):
+		self.load()
 		return self._data

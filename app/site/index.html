@@ -6,7 +6,7 @@
 
 		  <div class="card">
 			<div class="card-header">
-			  <a class="card-link" data-toggle="collapse" href="#{{post.id}}">{{post.author}}</a>
+			  <a class="card-link" data-toggle="collapse" href="#{{post.id}}">{{post.post_title}} ( {{post.time}} )</a>
 			</div>
 			<div class="collapse" id = "{{post.id}}" data-parent="#accordion">
 			  <div class="card-body">
@@ -14,25 +14,34 @@
 					<!--
 					Post text and replies will go here (another for loop will be needed)
 					-->
-					<div class="row">
-						<div class="col">
-							<h4>{{post.text}}</h4>
+					<div class="col">
+						<div class="row">
+							<h4>{{post.post_text}}</h4>
+						</div>
+						{% for reply in post.replies %}
+						<div class="row">
+							<h4>{{reply.time}}: {{reply.text}}</h4>
+						</div>
+						{% endfor %}
+						<div class ="row">
+							<form action="/reply/{{post.id}}" method="POST">
+								<div class="row">
+									<label>Reply to this thread:</label>
+								</div>
+								<div class="row">
+									<textarea name="reply_text" rows="4" cols="50"></textarea>
+								</div>
+								<div>
+									<input type="submit" value="Post"></input>
+								</div>
+							</form>
 						</div>
 					</div>
-					{% for reply in post.replies %}
-					<div class="row">
-						<div class="col">
-							<h4>{{reply.text}}</h4>
-						</div>
-					</div>
-					{% endfor %}
 				</div>
 			  </div>
 			</div>
 		  </div>
 		</div>
-
-
 	</div>
 	{% endfor %}
 

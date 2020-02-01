@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+	<form method="POST" action="/login">
+		<div class = "form-group">
+			<label>Username</label>
+			<input type = "text" name="username"></input>
+			<label>Password</label>
+			<input type = "password" name="pass"></input>
+			<input type = "submit"></input>
+		</div>
+	</form>
+{% endblock content  %}

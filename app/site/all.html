@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block content %}
+	{% for page in pages %}
+		<a href = "/{{page}}">{{page}}</a>
+	{% endfor %}
+{% endblock content  %}
