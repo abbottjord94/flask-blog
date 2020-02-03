@@ -4,7 +4,7 @@ from helper_functions import getMimeType
 from glorious_database import Database
 import os
 import json
-from datetime import date
+import datetime
 
 users = Database("users.json")
 threads = Database("threads.json")
@@ -30,7 +30,7 @@ def post():
 	if request.method == "POST":
 		_title = request.form.get('post_title')
 		_text = request.form.get('post_text')
-		_now = date.today()
+		_now = datetime.datetime.today()
 		_nows = _now.strftime("%A, %B %d, %Y, %H:%M:%S")
 		_id = hash(_text + _nows)
 		new_post = {
@@ -49,7 +49,7 @@ def post():
 def reply(thread):
 	if request.method == "POST":
 		_text = request.form.get('reply_text')
-		_time = date.today().strftime("%A, %B %d, %Y, %H:%M:%S")
+		_time = datetime.datetime.today().strftime("%A, %B %d, %Y, %H:%M:%S")
 		_thread = threads.data()[thread]
 		_thread['replies'].append( {"time":_time, "text":_text} )
 		threads.delete(thread)
