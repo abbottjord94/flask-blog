@@ -1,38 +1,36 @@
 {% extends "layout.html" %}
 {% block content %}
-	{% for post in posts %}
-	<div class = "container-fluid">
-		<div id="accordion">
 
+	<div class = "container-fluid">
+
+		<div id="accordion">
+		{% for post in posts %}
 		  <div class="card">
 			<div class="card-header">
-			  <a class="card-link" data-toggle="collapse" href="#{{post.id}}">{{post.post_title}} ( {{post.time}} )</a>
+			  <a class="card-link" data-toggle="collapse" href="#{{post.id}}">{{post.post_title}}</a>
+
 			</div>
 			<div class="collapse" id = "{{post.id}}" data-parent="#accordion">
 			  <div class="card-body">
 				<div class="container-fluid">
-					<!--
-					Post text and replies will go here (another for loop will be needed)
-					-->
-					<div class="col">
-						<div class="row">
+					<div class = "col">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Roosterhawaii.jpg" width=400 height=400></img>
+					</div>
+					<div class="row">
+						
+						<div class="col">
 							<h4>{{post.post_text}}</h4>
-						</div>
-						{% for reply in post.replies %}
-						<div class="row">
-							<h4>{{reply.time}}: {{reply.text}}</h4>
-						</div>
-						{% endfor %}
-						<div class ="row">
-							<form action="/reply/{{post.id}}" method="POST">
-								<div class="row">
-									<label>Reply to this thread:</label>
+							{% for reply in post.replies %}
+							<div class = "row">
+								<h5>{{reply.text}}</h5>
+							</div>
+							{% endfor %}
+							<form action="" method="POST">
+								<div class = "row">
+									<textarea rows="4" cols="50"></textarea>
 								</div>
-								<div class="row">
-									<textarea name="reply_text" rows="4" cols="50"></textarea>
-								</div>
-								<div>
-									<input type="submit" value="Post"></input>
+								<div class = "row">
+									<input type = "Submit" value = "Post"></input>
 								</div>
 							</form>
 						</div>
@@ -41,8 +39,11 @@
 			  </div>
 			</div>
 		  </div>
+		{% endfor %}
 		</div>
+
+
 	</div>
-	{% endfor %}
+
 
 {% endblock content  %}

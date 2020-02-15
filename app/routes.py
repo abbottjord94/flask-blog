@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request, redirect, Response
+from flask import render_template, request, redirect, Response, session
 from helper_functions import getMimeType
 from glorious_database import Database
 import os
@@ -8,6 +8,7 @@ import datetime
 
 users = Database("users.json")
 threads = Database("threads.json")
+database_change_queue = []
 
 @app.route('/')
 def home():
@@ -16,14 +17,6 @@ def home():
 	for _t in _threads:
 		_items.append(_threads[_t])
 	return render_template('index.html', posts = _items)
-
-@app.route('/about')
-def about():
-	return render_template('about.html')
-
-@app.route('/contact')
-def contact():
-	return render_template('contact.html')
 
 @app.route('/post', methods = ['GET', 'POST'])
 def post():
@@ -57,6 +50,37 @@ def reply(thread):
 		return redirect("/",code=302)
 	if request.method == "GET":
 		return redirect("/",code=302)
+
+@app.route('/edit/<page>', methods = ['GET', 'POST'])
+def edit(page):
+	if request.method == "GET":
+		if session['username']:
+			return Response(open(os.path.join(os.path.dirname(__file__)) + '/site/' + page).read(), mimetype='text/plain')
+		else:
+			return render_template('login.html')
+	if request.method == "POST":
+		if session['username']:
+			_text = request.form.get('file_text')
+			_filename = request.form.get('filename')
+			_file = open(os.path.join(os.path.dirname(__file__)) + '/site/' + _filename, "w+")
+			_file.write(_text)
+			_file.close()
+			return render_template(_filename)
+		else:
+			return render_template('login.html')
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+	if request.method == "GET":
+		return render_template('login.html')
+	if request.method == "POST":
+		_user = request.form.get('username')
+		_pass = request.form.get('pass')
+		if users.data()[_user]['password'] == _pass:
+			session['username'] = _user
+			return render_template('index.html')
+		else:
+			return render_template('loginfailed.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
