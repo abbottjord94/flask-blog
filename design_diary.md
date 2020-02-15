@@ -1,0 +1,11 @@
+# Flask Blog Design Diary
+
+As I had some previous experience in web development, this assignment was less challenging for me, at least in terms of programming the server. Despite this, there were some challenges that were difficult to resolve; time, ultimately, was the limiting factor in these cases. These challenges only related to the stretch goals. All other required features for the website were completed.
+
+I was able to implement each feature incrementally without too much difficulty; Flask is definitely among the simplest web frameworks I have ever worked with. It also interconnects well with the more basic features of Python (such as the datetime and os libraries), which makes it far easier for beginners to get started. Unlike Node.js, however, Flask does not have an intuitive means of setting up background processes; functions are only called when a route is accessed. This could be resolved with a better understanding of threading, however.
+
+Despite my previous web development experience, I had very little experience with features such as a login/registration system and data security. Because of Flask's relative simplicity, I was able to implement a login system and learned the basics of how one works; I also became more concious of specifically where data security is most important, particularly for the user.
+
+A challenge that I was not able to resolve involved my intention to obtain an SSL certificate for a domain name that I own, such that I could host the server publicly and demonstrate security as it relates to storing user data and man-in-the-middle attacks. For some reason, my home router would not accept requests to port 80, the default HTTP port. Virtually every other port is accessible, including port 22 and several other ports used for different purposes. As a result, it is impossible to publicly host the website on this server, and so I decided to move on to other portions of the project.
+
+As was discussed in class, a future student would certainly benefit from a primer on web development concepts, such as the client/server model, the different types of web requests, encryption, etc. Additionally, more practice in Python itself would be beneficial to students just learning it for the first time. 
