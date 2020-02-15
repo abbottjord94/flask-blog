@@ -1,0 +1,7 @@
+# Buddy Report
+
+For this assignment, Gannon Carroll and Drew Alexandrescu were assigned to me as buddies. Both of them gave good and honest effort to their individual projects, and I would be happy to work with both of them on future assignments, if given the opportunity.
+
+Drew Alexandrescu seemed to struggle more on the assignment, thus he had the most questions for me. As he had relatively little experience in web development, many concepts related to web programming were new to him; however, once I explained some of these concepts (such as the difference between GET/POST requests, how HTML forms work), it seemed that he was able to make the necessary connections with his previous experiences in programming in order to complete the individual features of his website. He stayed on task during every lab and class session, and some of his questions, and the ensuing discussion, clarified to me certain requirements for the assignment.
+
+Gannon Carroll seemed to have more experience in programming, and so had relatively few questions for me; the issues he had related to the Flask framework itself, and the initial stages of running the test server. Once that was resolved, he seemed to be able to work on his website independently. During one of our meetings, he told me he was currently in training as a web developer for one of HSU's departments (as of now, I can't recall exactly which department he said he works for); as I am curious about similar opportunities, he informed me about the HSU Handshake website. 
